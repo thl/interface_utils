@@ -1,7 +1,9 @@
 #
-# THIS NEEDS TO BE INCLUDED IN OTHER HELPERS TO USE:
-# include InterfaceUtilsHelper
-#
+# This helper is included globally. Make sure to add the stylesheet:
+# def stylesheet_files
+#  super + ['interface_utils']
+# end
+
 module InterfaceUtilsHelper
   
   #
@@ -73,9 +75,4 @@ module InterfaceUtilsHelper
       #{new_item_link path_or_array, text, options}
     </div>"
   end
-
-  def stylesheet_files
-    super + ['interface_utils']
-  end
-
 end
