@@ -25,7 +25,7 @@ module InterfaceUtilsHelper
         # If the displayed model name should be different than the model's actual name, you can define model_display_name(), which
         # should take the actual model name as an argument (e.g. 'feature_geo_code') and return the displayed model name (e.g. 'geo_code').  
         model_name = model_display_name(model_name) if defined? model_display_name
-        text = "New " + model_name.titleize
+        text = "New " + model_name.titleize.s
       end
     end
     link_to(text, path, :class => 'item-icon-new', :title => options[:title] || text || "New")
