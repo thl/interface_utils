@@ -73,6 +73,6 @@ module InterfaceUtilsHelper
   def highlighted_new_item_link(path_or_array, text=nil, options={})
     "<div class='#{options[:align] || 'left'} highlight'>
       #{new_item_link path_or_array, text, options}
-    </div>"
+    </div>".html_safe
   end
 end
