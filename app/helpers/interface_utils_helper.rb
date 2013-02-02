@@ -1,8 +1,4 @@
 #
-# This helper is included globally. Make sure to add the stylesheet:
-# def stylesheet_files
-#  super + ['interface_utils']
-# end
 
 module InterfaceUtilsHelper
   
@@ -74,5 +70,14 @@ module InterfaceUtilsHelper
     "<div class='#{options[:align] || 'left'} highlight'>
       #{new_item_link path_or_array, text, options}
     </div>".html_safe
+  end
+  
+  def javascript_on_load(*args, &block)
+    if block_given?
+      content = with_output_buffer(&block)
+      javascript_tag "$(document).ready(function(){#{content}})"
+    else
+      javascript_tag "$(document).ready(function(){#{args.first}})"
+    end
   end
 end

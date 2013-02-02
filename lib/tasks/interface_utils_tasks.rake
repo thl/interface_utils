@@ -1,6 +1,4 @@
-namespace :interface_utils do
-  desc "Syncronize extra files for Interface Utilities."
-  task :sync do
-    system "rsync -ruv --exclude '.*' vendor/plugins/interface_utils/public ."
-  end
-end
+# desc "Explaining what the task does"
+# task :interface_utils do
+#   # Task goes here
+# end
