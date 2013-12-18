@@ -18,7 +18,7 @@ module InterfaceUtils
         when 'apoc.village.virginia.edu' then APOC
         when 'e-bhutan.bt'               then EBHUTAN
         else
-          if hostname =~ /sds.+\.itc\.virginia\.edu/
+          if hostname =~ /sds.+\.it[c|s]\.virginia\.edu/
             PRODUCTION
           elsif hostname.ends_with?('local') || hostname.starts_with?('vpn-user')
             LOCAL
