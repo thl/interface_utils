@@ -53,9 +53,9 @@ module FrameHelper
     u = 'http'
     u += 's' if request.ssl?
     u += '://'
-    u += request.host.dup.force_encoding(Encoding::UTF_8)
-    u += ":#{request.port.dup.force_encoding(Encoding::UTF_8)}" unless request.port.blank?
-    u += request.fullpath.dup.force_encoding(Encoding::UTF_8)
+    u += request.host
+    u += ":#{request.port}" unless request.port.blank?
+    u += request.fullpath
     return u
   end
 
