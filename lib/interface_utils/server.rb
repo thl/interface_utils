@@ -9,7 +9,7 @@ module InterfaceUtils
     EBHUTAN     = 7
     
     def self.environment
-      Rails.cache.fetch('server/environment') do
+      Rails.cache.fetch('server/environment', :expires_in => 1.day) do
         hostname = Socket.gethostname.downcase
         case hostname
         when 'sds6.itc.virginia.edu'     then STAGING
