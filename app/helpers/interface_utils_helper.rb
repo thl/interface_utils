@@ -33,7 +33,7 @@ module InterfaceUtilsHelper
   def delete_item_link(path_or_object, text="", options={})
     path = path_or_object.is_a?(String) ? path_or_object : object_path(path_or_object)
     text = "" if text.nil?
-    link_to(text, path, :class => 'item-icon-delete', :title => options[:title] || (text.blank? ? nil : text)  || "Delete", :method=>:delete, :confirm=>'WAIT! Are you sure you want to DELETE this item?')
+    link_to(text, path, class: 'item-icon-delete', title: options[:title] || (text.blank? ? nil : text)  || 'Delete', method: :delete, data: { confirm: 'WAIT! Are you sure you want to DELETE this item?' })
   end
   
   #
