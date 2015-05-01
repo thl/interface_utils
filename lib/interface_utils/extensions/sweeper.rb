@@ -15,6 +15,10 @@ module InterfaceUtils
         def perform_caching
           Rails.configuration.action_controller.perform_caching
         end
+        
+        def default_static_extension
+          Rails.configuration.default_static_extension
+        end
       end
     end
   end

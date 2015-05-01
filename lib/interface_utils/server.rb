@@ -22,7 +22,7 @@ module InterfaceUtils
       Rails.cache.fetch('server/environment', :expires_in => 1.day) do
         hostname = Socket.gethostname.downcase
         case hostname
-        when 'sds6.itc.virginia.edu'     then STAGING
+        when 'sdsv11.its.virginia.edu'   then STAGING
         when 'dev.thlib.org'             then DEVELOPMENT
         when 'apoc.village.virginia.edu' then APOC
         when 'e-bhutan.bt'               then EBHUTAN
