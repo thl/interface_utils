@@ -9,14 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require interface_utils/scaffolds
  *= require jquery-ui
  *= require authenticated_system/application
  *= require complex_scripts/application
+ *= require interface_utils/scaffolds
+ *= require interface_utils/bootstrap-deps
  */
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 .item-icon-delete, .item-icon-edit, .item-icon-manage, .item-icon-new, .item-icon-view{
 	padding:0 0 0 18px;
