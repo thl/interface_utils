@@ -14,7 +14,8 @@ module InterfaceUtilsHelper
       path_or_array[0] = path_or_array[0].to_s.classify.constantize.new if path_or_array.length == 1
       # All new actions are within the admin namespace, so :admin is added here:
       path_or_array.insert(0, :admin)
-      path = new_polymorphic_path path_or_array
+      title = options.delete(:title)
+      path = new_polymorphic_path(path_or_array, options)
       # If text is nil, set it to "New " + model name. For no text, the argument should be set to "". 
       if text.nil?
         model_name = path_or_array.last.is_a?(Symbol) ? path_or_array.last.to_s : path_or_array.last.class.name.tableize.singularize
@@ -24,7 +25,7 @@ module InterfaceUtilsHelper
         text = ts('new.record', :what => model_name.titleize.s)
       end
     end
-    link_to(text, path, :class => 'item-icon-new', :title => options[:title] || text || ts('new.this'))
+    link_to(text, path, :class => 'item-icon-new', :title => title || text || ts('new.this'))
   end
   
   #
