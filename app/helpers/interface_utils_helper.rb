@@ -63,7 +63,7 @@ module InterfaceUtilsHelper
     text = "" if text.nil?
     link_to(text, path, :class => 'item-icon-view', :title => options[:title] || (text.blank? ? nil : text)  || "View")
   end
-      
+  
   #
   #
   #
