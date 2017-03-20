@@ -3,7 +3,7 @@
 module InterfaceUtilsHelper
   
   #
-  # Usage: new_item_link(new_admin_blurb_url, "New Blurb"), new_item_link([:blurb]), new_item_link([@parent_object, :citation])
+  # Usage: new_item_link(new_admin_blurb_url, "New Blurb"), new_item_link([:blurb]), new_item_link([parent_object, :citation])
   #
   def new_item_link(path_or_array, text=nil, options={})
     if path_or_array.is_a?(String)
