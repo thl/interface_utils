@@ -43,7 +43,7 @@ module InterfaceUtilsHelper
   def edit_item_link(path_or_object, text="", options={})
     path = path_or_object.is_a?(String) ? path_or_object : edit_object_path(path_or_object)
     text = "" if text.nil?
-    link_to(text, path, :class => 'item-icon-edit', :title => options[:title] || (text.blank? ? nil : text)  || "Edit")
+    link_to(text, path, :class => 'item-icon-edit', :title => options[:title] || (text.blank? ? nil : text)  || "Edit", target: options[:target] ? '_target' : '_self')
   end
   
   #
