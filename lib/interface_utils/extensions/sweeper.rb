@@ -16,14 +16,14 @@ module InterfaceUtils
         expire_page("#{@@page_cache_directory}#{path}")
       end
       
+      def default_static_extension
+        #Rails.configuration.default_static_extension
+      end
+
       module ClassMethods
         # Very weird! ActionController::Caching seems to assume it is being called from controller. Adding this as hack
         def perform_caching
           Rails.configuration.action_controller.perform_caching
-        end
-        
-        def default_static_extension
-          Rails.configuration.default_static_extension
         end
       end
     end
