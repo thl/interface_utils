@@ -17,7 +17,7 @@ module InterfaceUtils
       end
       
       def default_static_extension
-        #Rails.configuration.default_static_extension
+        ActionController::Base.default_static_extension
       end
 
       module ClassMethods
