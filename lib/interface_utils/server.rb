@@ -5,8 +5,6 @@ module InterfaceUtils
     STAGING     = 3
     PRODUCTION  = 4
     OTHER       = 5
-    APOC        = 6
-    EBHUTAN     = 7
     
     def self.enable_localhost?
       enable_localhost = Rails.cache.fetch("application_settings/#{InterfaceUtils::Server.get_domain}/enable_localhost", :expires_in => 1.day) do
@@ -20,20 +18,15 @@ module InterfaceUtils
     
     def self.environment
       Rails.cache.fetch('server/environment', :expires_in => 1.day) do
-        hostname = Socket.gethostname.downcase
-        case hostname
-        when 'sdsv11.its.virginia.edu'                          then STAGING
-        when 'dev.thlib.org', 'advocatetest.admin.virginia.edu' then DEVELOPMENT
-        when 'apoc.village.virginia.edu'                        then APOC
-        when 'e-bhutan.bt'                                      then EBHUTAN
-        else
-          if hostname =~ /sds.+\.it[c|s]\.virginia\.edu/
-            PRODUCTION
-          elsif enable_localhost? && (hostname.ends_with?('local') || hostname.starts_with?('vpn-user'))
-            LOCAL
-          else
-            OTHER
-          end
+        environ = InterfaceUtils::ApplicationSettings.settings['server.environment']
+        environ.downcase!
+        environ.strip!
+        case environ
+        when 'local'       then LOCAL
+        when 'development' then DEVELOPMENT
+        when 'staging'     then STAGING
+        when 'production'  then PRODUCTION
+        else OTHER
         end
       end
     end
