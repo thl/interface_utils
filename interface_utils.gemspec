@@ -7,11 +7,11 @@ require "interface_utils/version"
 Gem::Specification.new do |s|
   s.name        = "interface_utils"
   s.version     = InterfaceUtils::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of InterfaceUtils."
-  s.description = "TODO: Description of InterfaceUtils."
+  s.authors     = ["Andres Montano"]
+  s.email       = ["amontano@virginia.edu"]
+  s.homepage    = "http://subjects.kmaps.virginia.edu"
+  s.summary     = "Helper methods common to all THL and shanti apps."
+  s.description = "Helper methods common to all THL and shanti apps."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
