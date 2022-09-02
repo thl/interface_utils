@@ -16,6 +16,10 @@ module InterfaceUtils
         expire_page("#{@@page_cache_directory}#{path}")
       end
       
+      def default_static_extension
+        ActionController::Base.default_static_extension
+      end
+      
       module ClassMethods
         # Very weird! ActionController::Caching seems to assume it is being called from controller. Adding this as hack
         def perform_caching
