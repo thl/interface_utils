@@ -4,8 +4,7 @@ module InterfaceUtils
       extend ActiveSupport::Concern
       
       included do
-        relative_root = ActionController::Base.relative_url_root
-        @@page_cache_directory = "{Rails.configuration.action_controller.page_cache_directory}#{relative_root if !relative_root.blank?}"
+        @@page_cache_directory = "public"
       end
       
       def cache_configured?
