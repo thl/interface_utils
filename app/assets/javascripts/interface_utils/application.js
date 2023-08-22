@@ -14,6 +14,6 @@
 //= require rails-ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
-//= require tinymce-jquery
+//= require tinymce
 
 // require jquery_ujs
