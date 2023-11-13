@@ -5,7 +5,7 @@ module InterfaceUtilsHelper
   #
   # Usage: new_item_link(new_admin_blurb_url, "New Blurb"), new_item_link([:blurb]), new_item_link([parent_object, :citation])
   #
-  def new_item_link(path_or_array, text=nil, options={})
+  def new_item_link(path_or_array, text=nil, **options)
     if path_or_array.is_a?(String)
       path = path_or_array
     elsif path_or_array.is_a?(Array)
@@ -15,7 +15,7 @@ module InterfaceUtilsHelper
       # All new actions are within the admin namespace, so :admin is added here:
       path_or_array.insert(0, :admin)
       title = options.delete(:title)
-      path = new_polymorphic_path(path_or_array, options)
+      path = new_polymorphic_path(path_or_array, **options)
       # If text is nil, set it to "New " + model name. For no text, the argument should be set to "". 
       if text.nil?
         model_name = path_or_array.last.is_a?(Symbol) ? path_or_array.last.to_s : path_or_array.last.class.name.tableize.singularize
@@ -31,7 +31,7 @@ module InterfaceUtilsHelper
   #
   # Usage: delete_item_link(object_path(@object), "Remove"), delete_item_link(@object)
   #
-  def delete_item_link(path_or_object, text="", options={})
+  def delete_item_link(path_or_object, text="", **options)
     path = path_or_object.is_a?(String) ? path_or_object : object_path(path_or_object)
     text = "" if text.nil?
     link_to(text, path, class: 'item-icon-delete', title: options[:title] || (text.blank? ? nil : text)  || 'Delete', method: :delete, data: { confirm: 'WAIT! Are you sure you want to DELETE this item?' })
@@ -40,7 +40,7 @@ module InterfaceUtilsHelper
   #
   # Usage: edit_item_link(edit_object_path(@object), "Edit"), edit_item_link(@object)
   #
-  def edit_item_link(path_or_object, text="", options={})
+  def edit_item_link(path_or_object, text="", **options)
     path = path_or_object.is_a?(String) ? path_or_object : edit_object_path(path_or_object)
     text = "" if text.nil?
     link_to(text, path, :class => 'item-icon-edit', :title => options[:title] || (text.blank? ? nil : text)  || "Edit", target: options[:target] ? '_target' : '_self')
@@ -49,7 +49,7 @@ module InterfaceUtilsHelper
   #
   # Usage: manage_item_link(object_path(@object), "Manage"), manage_item_link(@object)
   #
-  def manage_item_link(path_or_object, text="", options={})
+  def manage_item_link(path_or_object, text="", **options)
     path = path_or_object.is_a?(String) ? path_or_object : object_path(path_or_object)
     text = "" if text.nil?
     link_to(text, path, :class => 'item-icon-manage', :title => options[:title] || (text.blank? ? nil : text)  || "Manage")
@@ -58,7 +58,7 @@ module InterfaceUtilsHelper
   #
   # Usage: view_item_link(object_path(@object), "View"), view_item_link(@object)
   #
-  def view_item_link(path_or_object, text="", options={})
+  def view_item_link(path_or_object, text="", **options)
     path = path_or_object.is_a?(String) ? path_or_object : object_path(path_or_object)
     text = "" if text.nil?
     link_to(text, path, :class => 'item-icon-view', :title => options[:title] || (text.blank? ? nil : text)  || "View")
@@ -67,9 +67,9 @@ module InterfaceUtilsHelper
   #
   #
   #
-  def highlighted_new_item_link(path_or_array, text=nil, options={})
+  def highlighted_new_item_link(path_or_array, text=nil, **options)
     "<div class='#{options[:align] || 'left'} highlight'>
-      #{new_item_link path_or_array, text, options}
+      #{new_item_link path_or_array, text, **options}
     </div>".html_safe
   end
   
