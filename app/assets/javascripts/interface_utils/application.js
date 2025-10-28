@@ -15,5 +15,6 @@
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require tinymce
+//= require interface_utils/human
 
 // require jquery_ujs
