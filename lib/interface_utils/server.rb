@@ -6,7 +6,8 @@ module InterfaceUtils
     PRODUCTION  = 4
     NOD_DEV     = 5
     NOD_PRD     = 6
-    OTHER       = 7
+    NOD_LOCAL   = 7
+    OTHER       = 8
     
     def self.enable_localhost?
       enable_localhost = Rails.cache.fetch("application_settings/#{InterfaceUtils::Server.get_domain}/enable_localhost", :expires_in => 1.day) do
@@ -25,6 +26,7 @@ module InterfaceUtils
         environ.strip!
         case environ
         when 'local'       then LOCAL
+        when 'nod-local'   then NOD_LOCAL
         when 'development' then DEVELOPMENT
         when 'staging'     then STAGING
         when 'production'  then PRODUCTION
